@@ -1,0 +1,75 @@
+# This is the tool that turns the package into a "wheel" which users can pip install
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[project]
+name = "candiamazing" # install name: pip install candiamazing
+dynamic = [
+        "dependencies",
+        "version"
+]
+authors = [
+  { name="Connor Stone", email="connor.stone@utoronto.ca" },
+  { name="Erik Osinga", email="erik.osinga@utoronto.ca" },
+]
+description = "This is a template for designing a repository for a scientific python package."
+readme = "README.md"
+license = {file = "LICENSE"}
+# Fill out keywords to make your package findable in searches
+keywords = [
+        "GitHub",
+        "software development",
+        "scientific python",
+]
+# Use these to tag high level aspects of the package. See here: https://pypi.org/classifiers/
+classifiers=[ 
+        "Development Status :: 1 - Planning",
+        "Intended Audience :: Science/Research",
+        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python :: 3"
+]
+# See here for recommended python version and other dependencies: 
+# https://scientific-python.org/specs/spec-0000/#support-window
+requires-python = ">=3.12" 
+dependencies=[
+    "numpy>=2.3.5",
+    "scipy",
+]
+
+[project.urls]
+Homepage = "https://candiamazing"
+Documentation = "https://candiamazing.readthedocs.io/en/latest/"
+Repository = "https://github.com/CanDIAPL/candiamazing"
+Issues = "https://github.com/CanDIAPL/candiamazing/issues"
+
+# With these you can specify extra install options.
+# Now `pip install candiamazing[dev]` will install
+# the extra packages below along with the normal ones
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0,<9",
+    "ipywidgets",
+    "matplotlib",
+]
+
+# Allow your package to be called from the command line
+[project.scripts]
+candiamazing = "candiamazing:main"
+
+
+[tool.hatch.version]
+source = "vcs"
+
+# This will automatically apply a version to the package when you make a new
+# release. See the README "Releases" section for more.
+[tool.hatch.build.hooks.vcs]
+version-file = "src/candiamazing/_version.py"
+
+[tool.hatch.version.raw-options]
+local_scheme = "no-local-version"
+
+[tool.ruff]
+line-length = 100 # Same as Black.
+ignore = ["E741"]
