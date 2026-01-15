@@ -1,0 +1,6 @@
+coverage:
+  status:
+    project:
+      default:
+        target: auto    # The build fails if coverage drops
+        threshold: 0.1%   # Allow 0.1% wiggle room
