@@ -32,7 +32,7 @@ classifiers=[
 ]
 # See here for recommended python version and other dependencies: 
 # https://scientific-python.org/specs/spec-0000/#support-window
-requires-python = ">=3.12" 
+requires-python = ">=3.11" 
 dependencies=[
     "numpy>=2.3.5",
     "scipy",
@@ -71,5 +71,26 @@ version-file = "src/candiamazing/_version.py"
 local_scheme = "no-local-version"
 
 [tool.ruff]
-line-length = 100 # Same as Black.
+# Apply to both src and tests by default
+src = ["src", "tests"]
+# maximum allowed line length
+line-length = 100 
 ignore = ["E741"]
+
+[tool.ruff.format]
+# use double quotes for strings.
+quote-style = "double"
+# indent with spaces, rather than tabs.
+indent-style = "space"
+# respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+[tool.ruff.lint]
+# Can expand this as far as user wants
+select = [
+ "E",   # pycodestyle (PEP8) errors
+ "F",   # pyflakes
+ "I",   # isort-like import sorting
+ "B",   # bugbear (common bugs)
+ "UP",  # pyupgrade (modern Python idioms)
+]

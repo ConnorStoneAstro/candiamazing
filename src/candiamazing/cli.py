@@ -3,7 +3,7 @@ import sys
 from candiamazing import utils  # Import your local core module
 
 
-def main():
+def main(args=None):
     """
     The main entry point for the CLI.
     """
@@ -39,7 +39,9 @@ def main():
         parser.print_help(sys.stderr)
         sys.exit(1)
 
-    args = parser.parse_args()
+    if args is None:
+        args = sys.argv
+    args = parser.parse_args(args)
 
     # 4. Execute the mapped function
     if hasattr(args, "func"):
@@ -54,11 +56,13 @@ def main():
 
 
 def run_flux_to_mag(args):
-    utils.flux_to_mag(args.flux, args.zeropoint)
+    mag = utils.flux_to_mag(args.flux, args.zeropoint)
+    print(mag)
 
 
 def run_mag_to_flux(args):
-    utils.mag_to_flux(args.mag, args.zeropoint)
+    flux = utils.mag_to_flux(args.mag, args.zeropoint)
+    print(flux)
 
 
 if __name__ == "__main__":
