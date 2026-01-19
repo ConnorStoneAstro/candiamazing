@@ -11,6 +11,21 @@ class BaseConverter:
 
 
 class BrightnessConverter(BaseConverter):
+    """A class for converting between flux and magnitude.
+
+    This class converts brightness values between linear flux units and
+    logarithmic magnitude units. The provided zeropoint defines the reference
+    level for the magnitude system. For example, in the AB magnitude system the
+    zeropoint can be set to 8.9 when the fluxes are in units of Janskys where
+    the reference flux would be 3631 Jy. In CGS units of flux density (erg s^-1
+    cm^-2 Hz^-1), the zeropoint would be set to 48.6.
+
+    Parameters
+    ----------
+    zeropoint : float
+        The zeropoint for the magnitude system.
+    """
+
     def __init__(self, zeropoint: float):
         super().__init__(description="Brightness Converter")
         self.zeropoint = zeropoint
