@@ -1,5 +1,5 @@
-from .core import BaseConverter, BrightnessConverter, DistanceConverter
 from . import utils
+from .core import BaseConverter, BrightnessConverter, DistanceConverter
 from .test import test
 
 try:

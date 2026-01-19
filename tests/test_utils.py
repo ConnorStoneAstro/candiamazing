@@ -2,10 +2,10 @@ import numpy as np
 import pytest
 
 from candiamazing.utils import (
-    flux_to_mag,
-    mag_to_flux,
     distance_modulus_to_distance,
     distance_to_distance_modulus,
+    flux_to_mag,
+    mag_to_flux,
 )
 
 
@@ -21,13 +21,13 @@ def test_flux_mag(zeropoint, flux):
     # These are the actual "tests"
     assert np.all(np.abs(flux - flux_back) < 1e-10), "Round trip flux -> mag -> flux failed"
 
-    assert np.all(
-        mag == pytest.approx((zeropoint - 2.5 * np.log10(flux)))
-    ), "flux_to_mag calculation incorrect"
+    assert np.all(mag == pytest.approx(zeropoint - 2.5 * np.log10(flux))), (
+        "flux_to_mag calculation incorrect"
+    )
 
-    assert np.all(
-        flux == pytest.approx((10 ** ((zeropoint - mag) / 2.5)))
-    ), "mag_to_flux calculation incorrect"
+    assert np.all(flux == pytest.approx(10 ** ((zeropoint - mag) / 2.5))), (
+        "mag_to_flux calculation incorrect"
+    )
 
 
 @pytest.mark.parametrize(
@@ -41,12 +41,12 @@ def test_flux_mag(zeropoint, flux):
 def test_distance_modulus_distance(distmod, distance):
     # Test distmod to distance
     distance_calculated = distance_modulus_to_distance(distmod)
-    assert distance_calculated == pytest.approx(
-        distance
-    ), "Distance modulus to distance calculation incorrect"
+    assert distance_calculated == pytest.approx(distance), (
+        "Distance modulus to distance calculation incorrect"
+    )
 
     # Test distance to distmod
     distmod_calculated = distance_to_distance_modulus(distance)
-    assert distmod_calculated == pytest.approx(
-        distmod
-    ), "Distance to distance modulus calculation incorrect"
+    assert distmod_calculated == pytest.approx(distmod), (
+        "Distance to distance modulus calculation incorrect"
+    )

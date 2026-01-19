@@ -1,6 +1,7 @@
 import numpy as np
-from .utils import flux_to_mag, mag_to_flux
+
 from .core import DistanceConverter
+from .utils import flux_to_mag, mag_to_flux
 
 
 def test():
@@ -15,13 +16,13 @@ def test():
             # These are the actual "tests"
             assert abs(flux - flux_back) < 1e-10, "Round trip flux -> mag -> flux failed"
 
-            assert np.allclose(
-                mag, (zeropoint - 2.5 * np.log10(flux))
-            ), "flux_to_mag calculation incorrect"
+            assert np.allclose(mag, (zeropoint - 2.5 * np.log10(flux))), (
+                "flux_to_mag calculation incorrect"
+            )
 
-            assert np.allclose(
-                flux, (10 ** ((zeropoint - mag) / 2.5))
-            ), "mag_to_flux calculation incorrect"
+            assert np.allclose(flux, (10 ** ((zeropoint - mag) / 2.5))), (
+                "mag_to_flux calculation incorrect"
+            )
 
     dist_tool = DistanceConverter()
     for D, mu in [

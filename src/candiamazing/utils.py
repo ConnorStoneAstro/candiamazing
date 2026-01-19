@@ -1,8 +1,7 @@
-from typing import Union
 import numpy as np
 
 
-def flux_to_mag(flux: Union[float, np.ndarray], zeropoint: float) -> Union[float, np.ndarray]:
+def flux_to_mag(flux: float | np.ndarray, zeropoint: float) -> float | np.ndarray:
     """Convert flux to magnitude using the given zeropoint.
 
     Parameters
@@ -25,7 +24,7 @@ def flux_to_mag(flux: Union[float, np.ndarray], zeropoint: float) -> Union[float
     return -2.5 * np.log10(flux) + zeropoint
 
 
-def mag_to_flux(mag: Union[float, np.ndarray], zeropoint: float) -> Union[float, np.ndarray]:
+def mag_to_flux(mag: float | np.ndarray, zeropoint: float) -> float | np.ndarray:
     """Convert magnitude to flux using the given zeropoint.
 
     Parameters
@@ -47,7 +46,7 @@ def mag_to_flux(mag: Union[float, np.ndarray], zeropoint: float) -> Union[float,
     return 10 ** ((zeropoint - mag) / 2.5)
 
 
-def distance_modulus_to_distance(distmod: Union[float, np.ndarray]) -> Union[float, np.ndarray]:
+def distance_modulus_to_distance(distmod: float | np.ndarray) -> float | np.ndarray:
     """Convert distance modulus to distance in parsecs.
 
     Parameters
@@ -67,7 +66,7 @@ def distance_modulus_to_distance(distmod: Union[float, np.ndarray]) -> Union[flo
     return 10 ** ((distmod + 5) / 5)
 
 
-def distance_to_distance_modulus(distance: Union[float, np.ndarray]) -> Union[float, np.ndarray]:
+def distance_to_distance_modulus(distance: float | np.ndarray) -> float | np.ndarray:
     """Convert distance in parsecs to distance modulus.
 
     Parameters

@@ -1,4 +1,5 @@
 import pytest
+
 from candiamazing.cli import main
 
 

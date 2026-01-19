@@ -1,5 +1,5 @@
-from typing import Union
 import numpy as np
+
 import candiamazing.utils as utils
 
 
@@ -15,7 +15,7 @@ class BrightnessConverter(BaseConverter):
         super().__init__(description="Brightness Converter")
         self.zeropoint = zeropoint
 
-    def flux_to_mag(self, flux: Union[float, np.ndarray]) -> Union[float, np.ndarray]:
+    def flux_to_mag(self, flux: float | np.ndarray) -> float | np.ndarray:
         """Convert flux to magnitude using the stored zeropoint.
 
         Parameters
@@ -30,7 +30,7 @@ class BrightnessConverter(BaseConverter):
         """
         return utils.flux_to_mag(flux, self.zeropoint)
 
-    def mag_to_flux(self, mag: Union[float, np.ndarray]) -> Union[float, np.ndarray]:
+    def mag_to_flux(self, mag: float | np.ndarray) -> float | np.ndarray:
         """Convert magnitude to flux using the stored zeropoint.
 
         Parameters
@@ -52,7 +52,7 @@ class DistanceConverter(BaseConverter):
     def __init__(self):
         super().__init__(description="Distance Converter")
 
-    def distmod_to_distance(self, distmod: Union[float, np.ndarray]) -> Union[float, np.ndarray]:
+    def distmod_to_distance(self, distmod: float | np.ndarray) -> float | np.ndarray:
         """Convert distance modulus to distance in parsecs.
 
         Parameters
@@ -67,7 +67,7 @@ class DistanceConverter(BaseConverter):
         """
         return utils.distance_modulus_to_distance(distmod)
 
-    def distance_to_distmod(self, distance: Union[float, np.ndarray]) -> Union[float, np.ndarray]:
+    def distance_to_distmod(self, distance: float | np.ndarray) -> float | np.ndarray:
         """Convert distance in parsecs to distance modulus.
 
         Parameters

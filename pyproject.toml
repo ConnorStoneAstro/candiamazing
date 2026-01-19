@@ -48,6 +48,7 @@ Issues = "https://github.com/CanDIAPL/candiamazing/issues"
 # the extra packages below along with the normal ones
 [project.optional-dependencies]
 dev = [
+    "ruff",
     "pytest>=8.0,<9",
     "ipywidgets",
     "matplotlib",
