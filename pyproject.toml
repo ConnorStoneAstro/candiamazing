@@ -75,8 +75,10 @@ local_scheme = "no-local-version"
 # Apply to both src and tests by default
 src = ["src", "tests"]
 # maximum allowed line length
-line-length = 100 
-ignore = ["E741"]
+line-length = 100
+# this ignores ambiguous variable names. Enable this if your project
+# has a lot of equations with single character variables.
+#ignore = ["E741"]
 
 [tool.ruff.format]
 # use double quotes for strings.
