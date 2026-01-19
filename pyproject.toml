@@ -52,6 +52,7 @@ dev = [
     "pytest>=8.0,<9",
     "ipywidgets",
     "matplotlib",
+    "mypy"
 ]
 
 # Allow your package to be called from the command line
@@ -96,3 +97,8 @@ select = [
 ]
 [tool.ruff.lint.pydocstyle]
 convention = "numpy"
+
+[tool.mypy]
+packages = ["candiamazing"]
+ignore_missing_imports = true
+strict = false
