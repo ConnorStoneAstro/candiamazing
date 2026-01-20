@@ -1,3 +1,32 @@
+"""
+core.py
+=======
+
+**Author:** Connor Stone
+
+**Description:**
+This module defines the high-level, object-oriented interface for the `candiamazing` package.
+It contains the user-facing classes that manage state (configuration) and expose the
+package's functionality in a convenient way.
+
+**Development Notes (Instructional):**
+1. **Why Classes? (State Management):**
+   Unlike `utils.py`, which contains "pure functions" (math in, math out), this file uses
+   classes to remember information. For example, `BrightnessConverter` stores the `zeropoint`
+   as an attribute (`self.zeropoint`). This means the user only has to define the instrument
+   configuration once, rather than passing the zeropoint into every single function call.
+
+2. **The "Facade" Pattern:**
+   Notice that these classes rarely do complex math themselves. Instead, they act as a
+   wrapper (or facade) around the functions in `utils.py`. The class handles the *setup* (managing variables) and then delegates the *calculation* to `utils`. This keeps the
+   math logic centralized in one place while offering the user a friendly, object-oriented
+   experience.
+
+3. **The Public API:**
+   In a typical package, `core.py` defines the objects that users will actually import and
+   use in their scripts. It represents the "public face" of your software.
+"""
+
 import numpy as np
 
 import candiamazing.utils as utils

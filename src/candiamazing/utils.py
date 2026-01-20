@@ -1,3 +1,27 @@
+"""
+utils.py
+========
+
+**Author:** Connor Stone
+
+**Description:**
+This module provides the low-level mathematical utilities for the `candiamazing` package.
+It contains the raw physics equations for astronomical conversions (flux, magnitude, distance).
+
+**Development Notes (Instructional):**
+1. **What belongs here?** In a standard package layout, the `utils` module should hold "pure functions"—functions
+   that produce output based *only* on their inputs, without side effects or maintaining state
+   (like `self.zeropoint`). These are the atomic building blocks of your library. By keeping
+   them separate from `core.py` (classes) and `cli.py` (interface), you ensure they can be
+   easily reused anywhere (e.g., in a GUI, a web app, or a script).
+
+2. **Scaling Up:**
+   Currently, this is a single file because the package is small. In a large production code,
+   if this file grew to 1000+ lines, it would be standard practice to convert `utils.py` into
+   a directory (`utils/`) containing multiple specific files (e.g., `utils/photometry.py`,
+   `utils/cosmology.py`), while using `__init__.py` to keep the import paths clean.
+"""
+
 import numpy as np
 
 
